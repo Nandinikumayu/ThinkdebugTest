@@ -37,7 +37,6 @@ export default function CartModal() {
         role="dialog"
         aria-labelledby="cart-modal-title"
       >
-        {/* Modal Header */}
         <div className="modal-header">
           <div className="modal-title-wrap">
             <h2 id="cart-modal-title" className="modal-title">Shopping Cart</h2>
@@ -72,7 +71,6 @@ export default function CartModal() {
           </div>
         ) : (
           <>
-            {/* Cart Items List */}
             <div className="cart-items-scroll">
               {cart.map((item) => (
                 <div key={item.id} className="cart-item-row">
@@ -124,7 +122,6 @@ export default function CartModal() {
               ))}
             </div>
 
-            {/* Cart Footer & Summary */}
             <div className="modal-footer cart-footer">
               <div className="cart-summary-line">
                 <span>Subtotal</span>

@@ -8,18 +8,15 @@ const WISHLIST_STORAGE_KEY = "thinkdebug_ecommerce_wishlist_v1";
 const API_CACHE_KEY = "thinkdebug_products_cache_v1";
 
 export function ShopProvider({ children }) {
-  // Products state
   const [products, setProducts] = useState(initialProducts);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Search & Filter state
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sortBy, setSortBy] = useState("default");
 
-  // Cart state persisted to localStorage
   const [cart, setCart] = useState(() => {
     try {
       const saved = localStorage.getItem(CART_STORAGE_KEY);
@@ -29,7 +26,6 @@ export function ShopProvider({ children }) {
     }
   });
 
-  // Wishlist state persisted to localStorage (set of IDs)
   const [wishlist, setWishlist] = useState(() => {
     try {
       const saved = localStorage.getItem(WISHLIST_STORAGE_KEY);
@@ -39,11 +35,8 @@ export function ShopProvider({ children }) {
     }
   });
 
-  // Modals state
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
-
-  // Toast notifications
   const [toast, setToast] = useState(null);
 
   const showToast = useCallback((message, type = "info") => {
@@ -53,25 +46,22 @@ export function ShopProvider({ children }) {
     }, 2800);
   }, []);
 
-  // Sync Cart with localStorage
   useEffect(() => {
     try {
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
     } catch (err) {
-      console.warn("Could not persist cart to localStorage", err);
+      console.warn(err);
     }
   }, [cart]);
 
-  // Sync Wishlist with localStorage
   useEffect(() => {
     try {
       localStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(wishlist));
     } catch (err) {
-      console.warn("Could not persist wishlist to localStorage", err);
+      console.warn(err);
     }
   }, [wishlist]);
 
-  // Debounce search query to optimize filtering and bonus points
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedQuery(searchQuery);
@@ -79,17 +69,14 @@ export function ShopProvider({ children }) {
     return () => clearTimeout(handler);
   }, [searchQuery]);
 
-  // Fetch products from public API with caching (fakestoreapi.com/products)
   useEffect(() => {
     let isMounted = true;
     async function fetchProducts() {
-      // Check cache first
       try {
         const cached = sessionStorage.getItem(API_CACHE_KEY);
         if (cached) {
           const parsed = JSON.parse(cached);
           if (Array.isArray(parsed) && parsed.length > 0 && isMounted) {
-            // Merge with initial preview products (avoiding ID collisions)
             const combined = [...initialProducts];
             parsed.forEach((apiItem) => {
               if (!combined.some((item) => item.title.toLowerCase() === apiItem.title.toLowerCase())) {
@@ -101,7 +88,7 @@ export function ShopProvider({ children }) {
           }
         }
       } catch (e) {
-        console.warn("Cache read error", e);
+        console.warn(e);
       }
 
       setLoading(true);
@@ -130,10 +117,7 @@ export function ShopProvider({ children }) {
           setProducts(combined);
         }
       } catch (err) {
-        if (isMounted) {
-          console.log("Using rich fallback products due to API status/offline", err.message);
-          // initialProducts is already loaded and ready
-        }
+        if (isMounted) {}
       } finally {
         if (isMounted) setLoading(false);
       }
@@ -145,7 +129,6 @@ export function ShopProvider({ children }) {
     };
   }, []);
 
-  // Cart operations
   const addToCart = useCallback((product) => {
     setCart((prevCart) => {
       const existing = prevCart.find((item) => item.id === product.id);
@@ -192,7 +175,6 @@ export function ShopProvider({ children }) {
     [cart]
   );
 
-  // Wishlist operations
   const toggleWishlist = useCallback(
     (product) => {
       setWishlist((prev) => {
@@ -224,7 +206,6 @@ export function ShopProvider({ children }) {
     [showToast]
   );
 
-  // Derived counts & totals
   const totalCartCount = useMemo(() => {
     return cart.reduce((acc, item) => acc + item.quantity, 0);
   }, [cart]);
@@ -237,7 +218,6 @@ export function ShopProvider({ children }) {
     return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   }, [cart]);
 
-  // Categories list
   const categories = useMemo(() => {
     const set = new Set();
     products.forEach((p) => {
@@ -246,7 +226,6 @@ export function ShopProvider({ children }) {
     return ["all", ...Array.from(set)];
   }, [products]);
 
-  // Filtered & sorted products
   const filteredProducts = useMemo(() => {
     const q = debouncedQuery.trim().toLowerCase();
     return products
@@ -265,7 +244,7 @@ export function ShopProvider({ children }) {
         if (sortBy === "price-low") return a.price - b.price;
         if (sortBy === "price-high") return b.price - a.price;
         if (sortBy === "rating") return (b.rating?.rate || 0) - (a.rating?.rate || 0);
-        return 0; // default order
+        return 0;
       });
   }, [products, debouncedQuery, selectedCategory, sortBy]);
 

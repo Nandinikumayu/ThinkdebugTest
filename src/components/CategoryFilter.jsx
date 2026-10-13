@@ -36,7 +36,6 @@ export default function CategoryFilter() {
       </div>
 
       <div className="filter-sort-controls">
-        {/* Category Pills */}
         <div className="category-chips-list">
           {categories.map((cat) => (
             <button
@@ -49,7 +48,6 @@ export default function CategoryFilter() {
           ))}
         </div>
 
-        {/* Sort selector */}
         <div className="sort-wrapper">
           <label htmlFor="sort-select" className="sort-label">
             Sort by:

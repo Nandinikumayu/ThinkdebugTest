@@ -1,8 +1,3 @@
-/* ==========================================================================
-   e-commerce / Thinkdebug React Store Stylesheet
-   Pure Custom CSS - No UI Libraries (Bootstrap/MUI/AntD free)
-   ========================================================================== */
-
 :root {
   --primary-orange: #f28b02;
   --primary-orange-hover: #e07d00;
@@ -53,10 +48,6 @@ a {
   color: inherit;
 }
 
-/* ==========================================================================
-   Site Header
-   ========================================================================== */
-
 .site-header {
   position: sticky;
   top: 0;
@@ -76,7 +67,6 @@ a {
   gap: 20px;
 }
 
-/* Logo */
 .brand-logo {
   display: flex;
   align-items: center;
@@ -110,7 +100,6 @@ a {
   color: var(--primary-orange);
 }
 
-/* Search Bar */
 .header-search-form {
   flex: 1;
   max-width: 620px;
@@ -169,7 +158,6 @@ a {
   background: var(--primary-orange-hover);
 }
 
-/* Actions */
 .header-actions {
   display: flex;
   align-items: center;
@@ -271,7 +259,6 @@ a {
   background: #fef2f2;
 }
 
-/* Action Buttons (Wishlist & Cart) */
 .action-btn {
   display: flex;
   align-items: center;
@@ -315,10 +302,6 @@ a {
   font-size: 14px;
 }
 
-/* ==========================================================================
-   Main Content Layout
-   ========================================================================== */
-
 .main-content {
   padding: 24px 0 60px;
 }
@@ -328,10 +311,6 @@ a {
   margin: 0 auto;
   padding: 0 24px;
 }
-
-/* ==========================================================================
-   Hero Slider
-   ========================================================================== */
 
 .hero-slider-section {
   position: relative;
@@ -370,7 +349,6 @@ a {
   gap: 24px;
 }
 
-/* Left Art: 3D phone & store */
 .slide-art-left {
   display: flex;
   align-items: center;
@@ -427,7 +405,6 @@ a {
   transform: rotate(10deg);
 }
 
-/* Center Promo Circle */
 .slide-center-promo {
   display: flex;
   flex-direction: column;
@@ -524,7 +501,6 @@ a {
   color: #4b5563;
 }
 
-/* Right Art: Shop kiosk & floating bags */
 .slide-art-right {
   display: flex;
   align-items: center;
@@ -575,7 +551,6 @@ a {
   filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.15));
 }
 
-/* Slider Controls */
 .slider-nav-btn {
   position: absolute;
   top: 50%;
@@ -627,10 +602,6 @@ a {
   border-radius: 12px;
   background: #64748b;
 }
-
-/* ==========================================================================
-   Catalog Header Bar & Filtering
-   ========================================================================== */
 
 .catalog-header-bar {
   margin-bottom: 24px;
@@ -721,10 +692,6 @@ a {
   border-color: var(--primary-orange);
 }
 
-/* ==========================================================================
-   Product Grid & Product Cards
-   ========================================================================== */
-
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -748,7 +715,6 @@ a {
   border-color: #cbd5e1;
 }
 
-/* Wishlist Heart */
 .wishlist-heart-btn {
   position: absolute;
   top: 14px;
@@ -769,7 +735,6 @@ a {
   transform: scale(1.15);
 }
 
-/* Thumbnail */
 .product-image-container {
   width: 100%;
   height: 190px;
@@ -791,7 +756,6 @@ a {
   transform: scale(1.06);
 }
 
-/* Product Info */
 .product-info-box {
   margin-top: 12px;
   display: flex;
@@ -840,7 +804,6 @@ a {
   font-weight: 700;
 }
 
-/* Action Zone */
 .product-action-zone {
   margin-top: auto;
 }
@@ -870,7 +833,6 @@ a {
   font-size: 14px;
 }
 
-/* Counter view when in cart */
 .cart-counter-wrap {
   display: flex;
   flex-direction: column;
@@ -927,7 +889,6 @@ a {
   font-size: 10px;
 }
 
-/* Empty & Loading states */
 .products-loading-state,
 .products-empty-state {
   text-align: center;
@@ -961,10 +922,6 @@ a {
   font-size: 14px;
   font-weight: 700;
 }
-
-/* ==========================================================================
-   Modals (Cart & Wishlist)
-   ========================================================================== */
 
 .modal-backdrop {
   position: fixed;
@@ -1137,7 +1094,6 @@ a {
   color: var(--accent-red);
 }
 
-/* Modal Footer */
 .modal-footer {
   padding: 18px 24px;
   border-top: 1px solid var(--border-color);
@@ -1207,7 +1163,6 @@ a {
   background: var(--primary-orange-hover);
 }
 
-/* Empty states in modals */
 .cart-empty-view,
 .checkout-success-view {
   padding: 50px 24px;
@@ -1252,7 +1207,6 @@ a {
   margin: 0 auto 16px;
 }
 
-/* Wishlist actions in modal */
 .wishlist-actions-right {
   display: flex;
   align-items: center;
@@ -1300,10 +1254,6 @@ a {
   font-weight: 700;
 }
 
-/* ==========================================================================
-   Toast Notifications
-   ========================================================================== */
-
 .toast-notification {
   position: fixed;
   bottom: 24px;
@@ -1334,10 +1284,6 @@ a {
   font-weight: 800;
   color: var(--accent-green);
 }
-
-/* ==========================================================================
-   Footer
-   ========================================================================== */
 
 .store-footer {
   background: #ffffff;
@@ -1405,10 +1351,6 @@ a {
   font-size: 13px;
   color: var(--text-light);
 }
-
-/* ==========================================================================
-   Animations & Responsive Media Queries
-   ========================================================================== */
 
 @keyframes fadeIn {
   from { opacity: 0; }

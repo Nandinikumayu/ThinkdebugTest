@@ -24,7 +24,6 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="header-container">
-        {/* Brand Logo */}
         <a href="#" className="brand-logo" aria-label="E-Commerce Home">
           <div className="logo-icon-wrap">
             <svg
@@ -47,7 +46,6 @@ export default function Header() {
           </span>
         </a>
 
-        {/* Search Bar */}
         <form className="header-search-form" onSubmit={handleSearchSubmit}>
           <div className="search-input-wrapper">
             <input
@@ -87,9 +85,7 @@ export default function Header() {
           </div>
         </form>
 
-        {/* Action Controls */}
         <div className="header-actions">
-          {/* User Profile */}
           <div className="user-profile-menu">
             <button
               className="user-profile-btn"
@@ -133,7 +129,6 @@ export default function Header() {
             )}
           </div>
 
-          {/* Wishlist Button */}
           <button
             className="action-btn wishlist-btn"
             onClick={() => setIsWishlistOpen(true)}
@@ -157,7 +152,6 @@ export default function Header() {
             <span className="action-btn-text">Wishlist</span>
           </button>
 
-          {/* Cart Button */}
           <button
             className="action-btn cart-btn"
             onClick={() => setIsCartOpen(true)}

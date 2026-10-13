@@ -7,7 +7,6 @@ export default function HeroSlider() {
   const slideCount = heroSlides.length;
   const timeoutRef = useRef(null);
 
-  // Autoplay functionality: auto advance every 4 seconds unless hovered
   useEffect(() => {
     if (isPaused) return;
 
@@ -44,14 +43,13 @@ export default function HeroSlider() {
           className="slides-track"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
-          {heroSlides.map((slide, idx) => (
+          {heroSlides.map((slide) => (
             <div
               key={slide.id}
               className={`slide-item theme-${slide.theme}`}
               style={{ background: slide.bgGradient }}
             >
               <div className="slide-content-grid">
-                {/* Visual Elements Left: 3D Store Illustration */}
                 <div className="slide-art-left">
                   <div className="store-mockup-frame">
                     <div className="phone-screen-card">
@@ -66,7 +64,6 @@ export default function HeroSlider() {
                   </div>
                 </div>
 
-                {/* Center Banner Message */}
                 <div className="slide-center-promo">
                   <span className="promo-badge">{slide.badge}</span>
                   <div className="promo-badge-circle">
@@ -84,7 +81,6 @@ export default function HeroSlider() {
                   </div>
                 </div>
 
-                {/* Visual Elements Right: 3D Shop Kiosk & Bags */}
                 <div className="slide-art-right">
                   <div className="shop-kiosk-frame">
                     <div className="kiosk-awning">SHOP</div>
@@ -103,7 +99,6 @@ export default function HeroSlider() {
           ))}
         </div>
 
-        {/* Previous Control Button */}
         <button
           className="slider-nav-btn prev-btn"
           onClick={goToPrev}
@@ -114,7 +109,6 @@ export default function HeroSlider() {
           </svg>
         </button>
 
-        {/* Next Control Button */}
         <button
           className="slider-nav-btn next-btn"
           onClick={goToNext}
@@ -126,7 +120,6 @@ export default function HeroSlider() {
         </button>
       </div>
 
-      {/* Pagination Indicators (Dots) */}
       <div className="slider-dots-container">
         {heroSlides.map((_, index) => (
           <button

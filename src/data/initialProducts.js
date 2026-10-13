@@ -1,4 +1,3 @@
-// Fallback / initial products dataset matching the Task Preview and FakeStoreAPI categories
 export const initialProducts = [
   {
     id: 101,

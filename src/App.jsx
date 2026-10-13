@@ -14,18 +14,14 @@ function ShopContent() {
 
   return (
     <div className="store-app">
-      {/* Top Navigation */}
       <Header />
 
       <main className="main-content">
         <div className="content-container">
-          {/* Custom Image Slider with Autoplay and Navigation Controls */}
           <HeroSlider />
 
-          {/* Special Products Section & Category Filter */}
           <CategoryFilter />
 
-          {/* Product Grid */}
           {loading && products.length === 0 ? (
             <div className="products-loading-state">
               <div className="spinner"></div>
@@ -56,7 +52,6 @@ function ShopContent() {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="store-footer">
         <div className="footer-container">
           <div className="footer-col">
@@ -94,7 +89,6 @@ function ShopContent() {
         </div>
       </footer>
 
-      {/* Modals & Popups */}
       <CartModal />
       <WishlistModal />
       <Toast />

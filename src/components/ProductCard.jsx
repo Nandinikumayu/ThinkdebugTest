@@ -15,7 +15,6 @@ export default function ProductCard({ product }) {
 
   return (
     <div className="product-card">
-      {/* Wishlist Heart Button */}
       <button
         className={`wishlist-heart-btn ${isWishlisted ? "active" : ""}`}
         onClick={() => toggleWishlist(product)}
@@ -36,7 +35,6 @@ export default function ProductCard({ product }) {
         </svg>
       </button>
 
-      {/* Product Image */}
       <div className="product-image-container">
         <img
           src={product.image}
@@ -44,14 +42,12 @@ export default function ProductCard({ product }) {
           loading="lazy"
           className="product-thumbnail"
           onError={(e) => {
-            // fallback placeholder if image link is broken
             e.currentTarget.src =
               "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=80";
           }}
         />
       </div>
 
-      {/* Product Info */}
       <div className="product-info-box">
         <h3 className="product-card-title" title={product.title}>
           {product.title}
@@ -62,7 +58,6 @@ export default function ProductCard({ product }) {
           <span className="price-value">${Number(product.price).toFixed(product.price % 1 === 0 ? 0 : 2)}</span>
         </div>
 
-        {/* Rating stars if available */}
         {product.rating && (
           <div className="product-rating-row">
             <span className="rating-stars">★ {product.rating.rate}</span>
@@ -70,7 +65,6 @@ export default function ProductCard({ product }) {
           </div>
         )}
 
-        {/* Cart Action Buttons */}
         <div className="product-action-zone">
           {cartQty === 0 ? (
             <button
