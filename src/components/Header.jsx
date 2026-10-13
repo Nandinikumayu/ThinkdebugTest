@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useShop } from "../context/ShopContext";
 
 export default function Header() {
@@ -10,8 +10,6 @@ export default function Header() {
     setIsCartOpen,
     setIsWishlistOpen
   } = useShop();
-
-  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -86,49 +84,6 @@ export default function Header() {
         </form>
 
         <div className="header-actions">
-          <div className="user-profile-menu">
-            <button
-              className="user-profile-btn"
-              onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-              aria-label="User Profile"
-            >
-              <span className="user-avatar-circle">
-                <svg
-                  viewBox="0 0 24 24"
-                  width="16"
-                  height="16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-              </span>
-              <span className="user-name">Tim</span>
-              <span className="dropdown-caret">▾</span>
-            </button>
-
-            {userDropdownOpen && (
-              <div className="user-dropdown-card">
-                <div className="dropdown-header">
-                  <strong>Tim Robbins</strong>
-                  <p>tim.robbins@example.com</p>
-                </div>
-                <div className="dropdown-divider"></div>
-                <a href="#orders" onClick={() => setUserDropdownOpen(false)}>My Orders</a>
-                <a href="#account" onClick={() => setUserDropdownOpen(false)}>Account Settings</a>
-                <a href="#rewards" onClick={() => setUserDropdownOpen(false)}>Gift Cards & Offers</a>
-                <div className="dropdown-divider"></div>
-                <button className="dropdown-logout" onClick={() => setUserDropdownOpen(false)}>
-                  Sign Out
-                </button>
-              </div>
-            )}
-          </div>
-
           <button
             className="action-btn wishlist-btn"
             onClick={() => setIsWishlistOpen(true)}
